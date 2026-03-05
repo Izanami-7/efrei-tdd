@@ -129,6 +129,35 @@ Everything is re‑exported from `src/index.ts`:
 - Game evaluation:
   - `evaluateGame`, `GameResult`, `PlayerEvaluation`
 
+## Usage example
+
+```ts
+import {
+  parseCards,
+  evaluateGame,
+  HandCategory,
+} from "./src/index";
+
+const board = parseCards(["AH", "JH", "9H", "4H", "2C"]);
+const players = [
+  parseCards(["6H", "KD"]),
+  parseCards(["AS", "AD"]),
+];
+
+const result = evaluateGame(board, players);
+
+for (const player of result.players) {
+  const codes = player.evaluation.chosen5.map((c) => `${c.rank}${c.suit}`);
+  console.log(
+    `Player ${player.index}:`,
+    HandCategory[player.evaluation.category],
+    codes.join(" ")
+  );
+}
+
+console.log("Winner indexes:", result.winnerIndexes);
+```
+
 ## Input validity
 
 To keep the focus on hand evaluation and comparison:
