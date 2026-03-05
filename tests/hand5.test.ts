@@ -122,5 +122,21 @@ describe("compareHandEvaluations - tie-breaks for equal categories", () => {
     const comparison = compareHandEvaluations(handA, handB);
     expect(comparison).toBe(0);
   });
+
+  it("breaks two-pair ties using kicker when pairs are equal", () => {
+    const withAceKicker = evalFromCodes(["AH", "AD", "KC", "KD", "2S"]);
+    const withQueenKicker = evalFromCodes(["AH", "AD", "KC", "KD", "QH"]);
+
+    expect(compareHandEvaluations(withQueenKicker, withAceKicker)).toBeGreaterThan(0);
+    expect(compareHandEvaluations(withAceKicker, withQueenKicker)).toBeLessThan(0);
+  });
+
+  it("compares full houses by trips rank first, then pair rank", () => {
+    const fullHouseHighTrips = evalFromCodes(["KH", "KD", "KC", "2S", "2D"]); // K full of 2s
+    const fullHouseLowTrips = evalFromCodes(["QH", "QD", "QC", "AS", "AD"]); // Q full of As
+
+    expect(compareHandEvaluations(fullHouseHighTrips, fullHouseLowTrips)).toBeGreaterThan(0);
+    expect(compareHandEvaluations(fullHouseLowTrips, fullHouseHighTrips)).toBeLessThan(0);
+  });
 });
 
