@@ -166,3 +166,13 @@ To keep the focus on hand evaluation and comparison:
 
 If needed, an extra validation layer could be added on top to detect and reject such invalid inputs.
 
+## Limitations and extensions
+
+- No betting, blinds, chip stacks or side pots are modeled here.
+- No support for jokers or wildcards.
+- No suit ordering for tie-breaks (only flush detection).
+- Possible extensions:
+  - add an input validation layer for duplicate cards,
+  - expose helpers to pretty-print hands and categories,
+  - connect this evaluator to a higher-level game engine or UI.
+
