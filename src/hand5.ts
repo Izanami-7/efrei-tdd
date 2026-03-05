@@ -1,5 +1,5 @@
 import type { Card, RankSymbol } from "./cards";
-import { rankToValue } from "./cards";
+import { rankToValue, sortCardsByRankDesc } from "./cards";
 
 export enum HandCategory {
   HIGH_CARD = 1,
@@ -139,7 +139,7 @@ export function evaluate5(cards: Card[]): HandEvaluation {
   }
 
   if (flush) {
-    const sorted = [...cards].sort((a, b) => rankToValue(b.rank) - rankToValue(a.rank));
+    const sorted = sortCardsByRankDesc(cards);
     return {
       category: HandCategory.FLUSH,
       rankValues: sorted.map((c) => rankToValue(c.rank)),
