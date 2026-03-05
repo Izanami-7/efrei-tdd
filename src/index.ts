@@ -1,4 +1,10 @@
-export { parseCard, parseCards, cardToString, sortCardsByRankDesc } from "./cards";
+export {
+  parseCard,
+  parseCards,
+  cardToString,
+  sortCardsByRankDesc,
+  type Card,
+} from "./cards";
 export {
   HandCategory,
   type HandEvaluation,

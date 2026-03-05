@@ -134,8 +134,7 @@ Everything is re‑exported from `src/index.ts`:
 ```ts
 import {
   parseCards,
-  evaluateGame,
-  HandCategory,
+  evaluateGame
 } from "./src/index";
 
 const board = parseCards(["AH", "JH", "9H", "4H", "2C"]);
@@ -156,6 +155,41 @@ for (const player of result.players) {
 }
 
 console.log("Winner indexes:", result.winnerIndexes);
+```
+
+## Interactive CLI
+
+This project also exposes a small interactive CLI to evaluate a game from the terminal.
+
+### Run the CLI
+
+```bash
+npm start
+```
+
+You will then be prompted for:
+
+- the **board** (5 community cards), as codes separated by spaces,
+- the **number of players**,
+- the **2 hole cards** for each player.
+
+Example session:
+
+```text
+=== Texas Hold'em Hand Evaluator ===
+Enter cards as codes like: AH KD 2C ...
+Ranks: 2-9 T J Q K A | Suits: C D H S
+
+Board (5 community cards, space-separated): AH JH 9H 4H 2C
+Number of players (each with 2 hole cards): 2
+Player 0 hole cards (2 cards, space-separated): 6H KD
+Player 1 hole cards (2 cards, space-separated): AS AD
+
+=== Results ===
+Player 0: FLUSH (AH JH 9H 6H 4H)
+Player 1: ONE_PAIR (AS AD AH JH 9H)
+
+Winner index(es): 0
 ```
 
 ## Input validity

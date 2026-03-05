@@ -1,6 +1,6 @@
 import type { Card } from "./cards";
-import { evaluate7, type HandEvaluation } from "./hand7";
-import { compareHandEvaluations } from "./hand5";
+import { evaluate7 } from "./hand7";
+import { compareHandEvaluations, type HandEvaluation } from "./hand5";
 
 export interface PlayerEvaluation {
   index: number;

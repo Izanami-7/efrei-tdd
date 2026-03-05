@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "vitest"
+    "test": "vitest",
+    "start": "TS_NODE_PROJECT=tsconfig.cli.json node --require ts-node/register src/cli.ts"
   },
   "repository": {
     "type": "git",
